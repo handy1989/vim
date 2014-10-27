@@ -1,5 +1,5 @@
 #!/bin/bash
-source_dirs="common include message metadata nodes test"
+source_dirs="common include message metadata nodes test" # change to your own directories
 CTAGS=/usr/bin/ctags
 
 function log
