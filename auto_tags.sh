@@ -28,7 +28,7 @@ do
             log "Something is wrong. maybe directories are empty!"
             break;
         fi
-        latest_update_time=`log "$latest_update_file_info" | awk '{print $2}'`
+        latest_update_time=`echo "$latest_update_file_info" | awk '{print $2}'`
         tags_time=`stat ./tags | grep "Modify" | awk '{printf("%s-%s\n", $2, $3)}'`
         log "latest_update_file_info: $latest_update_file_info"
         log "tags_time: $tags_time"
