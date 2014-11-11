@@ -1,10 +1,13 @@
 #!/bin/bash
-source_dirs="common include message metadata nodes test" # change to your own directories
+source_dirs="common include message nodes tests metadata/node_metadata/src"
+max_log_size=10 # Unit: MB
+log_file="auto_tags.log"
+
 CTAGS=/usr/bin/ctags
 
 function log
 {
-    echo [`date +"%Y-%m-%d %H:%M:%S"`] $*
+    echo [`date +"%Y-%m-%d %H:%M:%S"`] $* >> $log_file
 }
 
 while [ 1 -gt 0 ]
@@ -45,6 +48,10 @@ do
         else
             log "tags is newer than source files!"
         fi
-    fi
+    fi 
     sleep 10
+    log_size=`wc -c $log_file | awk '{print $1}'`
+    if [ $log_size -gt $(($max_log_size*1024*1024)) ];then
+        mv auto_tags.log auto_tags.log.bak
+    fi
 done
