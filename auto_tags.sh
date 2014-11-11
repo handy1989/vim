@@ -2,7 +2,7 @@
 source_dirs="common include message nodes tests metadata/node_metadata/src"
 max_log_size=10 # Unit: MB
 log_file="auto_tags.log"
-#test2
+#test3
 
 CTAGS=/usr/bin/ctags
 
