@@ -57,10 +57,10 @@ do
         fi
     fi
     sleep 10
-    log_size=`wc -c $log_file | awk '{print $1}'`
+    log_size=`wc -c $work_root/$log_file | awk '{print $1}'`
     if [ $log_size -gt $(($max_log_size*1024*1024)) ];then
         mv $work_root/$log_file $work_root/$log_file.bak
     fi
 
-    cd - || break
+    cd -  || break
 done

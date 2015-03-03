@@ -6,7 +6,7 @@ if [ $# -ne 1 ];then
     exit 1
 fi
 if [ $1 = "start" ];then
-    nohup sh $auto_tags_script &
+    nohup sh $auto_tags_script >/dev/null 2>&1 &
 elif [ $1 = "stop" ];then
     ps axu | grep $auto_tags_script | grep -v grep | awk '{print $2}' | xargs -I{} -t kill "{}"
 fi
